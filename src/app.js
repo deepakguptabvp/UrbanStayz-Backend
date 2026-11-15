@@ -7,6 +7,7 @@ import propertyRoutes from "./routes/PropertyRoute.js";
 import authRoutes from "./routes/AuthRoute.js";
 import contactRoutes from "./routes/ContactRoute.js";
 import bookingRoutes from "./routes/BookingRoute.js";
+import chatbotRoutes from "./routes/ChatbotRoute.js";
 
 // Import Error Middlewares
 import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
@@ -39,6 +40,7 @@ app.get("/", (req, res) => {
       auth: "/api/auth",
       contact: "/api/contact",
       bookings: "/api/bookings",
+      chatbot: "/api/chatbot",
     },
   });
 });
@@ -52,6 +54,7 @@ app.use("/api/properties", propertyRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/chatbot", chatbotRoutes);
 
 // Catch 404 routes
 app.use(notFound);

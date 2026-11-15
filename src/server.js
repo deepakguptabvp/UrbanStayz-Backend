@@ -16,8 +16,14 @@ const server = app.listen(PORT, () => {
   );
 });
 
+// Prevent process from exiting if database disconnects or has stream warnings
+setInterval(() => {}, 1000 * 60 * 60);
+
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (err) => {
   console.error(`Unhandled Rejection: ${err.message}`);
-  // server.close(() => process.exit(1));
+});
+
+process.on("uncaughtException", (err) => {
+  console.error(`Uncaught Exception: ${err.message}`);
 });
